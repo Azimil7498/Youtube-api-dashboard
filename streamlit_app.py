@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import streamlit as st
 
 # Set page config
 st.set_page_config(page_title="YouTube Data Analysis", layout="wide")
@@ -70,3 +71,31 @@ col1.metric("📺 Total Views", f"{total_views:,}")
 col2.metric("❤️ Total Likes", f"{total_likes:,}")
 col3.metric("💬 Total Comments", f"{total_comments:,}")
 col4.metric("📊 Avg Views per Video", f"{avg_views:,.0f}")
+
+# KPI Cards
+total_views = int(full_df['views'].sum())
+total_likes = int(full_df['likes'].sum())
+total_comments = int(full_df['comment_count'].sum())
+total_videos = full_df.shape[0]
+total_channels = full_df['channel_title'].nunique()
+
+# Displaying KPIs
+st.markdown("## 📈 YouTube Channel Dashboard")
+
+col1, col2, col3 = st.columns(3)
+col1.metric("📺 Total Views", f"{total_views:,}")
+col2.metric("👍 Total Likes", f"{total_likes:,}")
+col3.metric("💬 Total Comments", f"{total_comments:,}")
+
+col4, col5 = st.columns(2)
+col4.metric("🎥 Total Videos", total_videos)
+col5.metric("📡 Unique Channels", total_channels)
+
+csv = full_df.to_csv(index=False).encode('utf-8')
+
+st.download_button(
+    label="📥 Download CSV",
+    data=csv,
+    file_name='youtube_video_data.csv',
+    mime='text/csv',
+)
