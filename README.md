@@ -54,7 +54,7 @@ Youtube-api-dashboard/
 ### 🙌 Author
 
 **Azimil Shaikh**  
-📬 azmilshaikh9@gmail.com  
+📬 azimilshaikh74@gmail.com  
 🔗 [LinkedIn](https://www.linkedin.com/in/azimil-shaikh-854b0328b)  
 📁 Portfolio coming soon…
 
